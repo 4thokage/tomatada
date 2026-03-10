@@ -1,5 +1,6 @@
 import { usePlayer } from "../stores/playerStore"
 import { xpForNextLevel } from "../game/leveling"
+import { UPGRADES } from "../game/inventory"
 
 export default function CharacterPanel() {
 
@@ -18,10 +19,10 @@ export default function CharacterPanel() {
           <div>Level</div>
           <b>{player().level}</b>
         </div>
-        {/* <div class="stat"> */}
-        {/*   <div>Gold</div> */}
-        {/*   <b>{player().gold}</b> */}
-        {/* </div> */}
+        <div class="stat">
+          <div>Gold</div>
+          <b>🪙 {player().gold}</b>
+        </div>
       </div>
       <div class="xp-container">
         <div class="xp-bar-bg">
@@ -32,6 +33,13 @@ export default function CharacterPanel() {
             }}
           />
         </div>
+      </div>
+      <div class="upgrades-summary">
+        {UPGRADES.map(u => (
+          <div class="upgrade-badge" title={u.description}>
+            {u.name.split(" ")[0]}: {player().upgrades[u.type]}
+          </div>
+        ))}
       </div>
     </div>
   )

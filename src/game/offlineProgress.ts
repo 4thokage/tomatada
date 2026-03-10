@@ -5,7 +5,7 @@ export function calculateOfflineProgress(
 ) {
   const delta = now - lastTimestamp
 
-  const goldEarned = Math.floor(delta * goldRate)
+  const goldEarned = 0
 
   return {
     elapsedTime: delta,

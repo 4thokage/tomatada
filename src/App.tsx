@@ -2,19 +2,19 @@ import { onMount } from "solid-js"
 import PomodoroTimer from "./components/PomodoroTimer"
 import TaskList from "./components/TaskList"
 import CharacterPanel from "./components/CharacterPanel"
+import Shop from "./components/Shop"
 import { initPlayer, addXP, addGold } from "./stores/playerStore"
 import { initTasks } from "./stores/taskStore"
 
 export default function App() {
-  onMount(() => {
-    initPlayer()
-    initTasks()
+  onMount(async () => {
+    await initPlayer()
+    await initTasks()
   })
 
   const rewardPomodoro = () => {
     addXP(50)
     addGold(20)
-    //TODO: notify user of pomodoro/break finished
   }
 
   return (
@@ -26,6 +26,8 @@ export default function App() {
       <PomodoroTimer onComplete={rewardPomodoro} />
 
       <TaskList />
+
+      <Shop />
     </div>
   )
 }
