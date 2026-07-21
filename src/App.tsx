@@ -25,8 +25,6 @@ export default function App() {
 
         <CharacterPanel />
 
-        <div class="section--divider" />
-
         <TaskList />
 
         <Shop />

@@ -105,34 +105,10 @@ body {
 .app-container {
   max-width: 560px;
   margin: 0 auto;
-  padding: var(--space-2xl) var(--space-lg) var(--space-2xl) calc(var(--space-lg) + var(--space-xs));
+  padding: var(--space-2xl) var(--space-lg);
   display: flex;
   flex-direction: column;
-  gap: 0;
-}
-
-
-/* ============================= */
-/* Section spacing (varied)      */
-/* ============================= */
-
-.section + .section {
-  margin-top: var(--space-xl);
-}
-
-.section--tight + .section {
-  margin-top: var(--space-lg);
-}
-
-.section--hero {
-  padding: var(--space-lg);
-  background: var(--color-paper-2);
-  border-radius: var(--radius-lg);
-  margin-top: var(--space-xl);
-}
-
-.section--hero + .section {
-  margin-top: var(--space-2xl);
+  gap: var(--space-xl);
 }
 
 
@@ -153,17 +129,6 @@ body {
   letter-spacing: 0.06em;
   text-transform: uppercase;
   color: var(--color-muted);
-}
-
-
-/* ============================= */
-/* Divider                       */
-/* ============================= */
-
-.section--divider {
-  height: 1px;
-  background: var(--color-rule);
-  margin: var(--space-lg) 0;
 }
 
 
@@ -403,10 +368,6 @@ input:focus:not(:focus-visible) {
     padding: var(--space-lg) var(--space-md);
   }
 
-  .section--hero {
-    padding: var(--space-md);
-  }
-
   .timer-wrapper {
     width: 180px;
     height: 180px;
@@ -420,10 +381,6 @@ input:focus:not(:focus-visible) {
 @media (max-width: 375px) {
   .app-container {
     padding: var(--space-md) var(--space-sm);
-  }
-
-  .section--hero {
-    padding: var(--space-sm);
   }
 
   .timer-wrapper {

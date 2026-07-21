@@ -153,7 +153,7 @@ export default function PomodoroTimer(props: Props) {
   }
 
   return (
-    <div class="section section--hero">
+    <div class="section">
       {/* @ts-ignore */}
       <jelly-tabs>{/* @ts-ignore */}
         <jelly-tab-panel label="Focus" active={mode() === "work" ? "" : undefined} onClick={() => setTimerMode("work")} />{/* @ts-ignore */}
