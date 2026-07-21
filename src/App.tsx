@@ -18,16 +18,18 @@ export default function App() {
   }
 
   return (
-    <div class="app-container">
-      <h1 class="title-main">Tomatada</h1>
+    // @ts-ignore -- jelly-theme is a web component loaded at runtime
+    <jelly-theme mode="dark">
+      <div class="app-container">
+        <PomodoroTimer onComplete={rewardPomodoro} />
 
-      <CharacterPanel />
+        <CharacterPanel />
 
-      <PomodoroTimer onComplete={rewardPomodoro} />
+        <TaskList />
 
-      <TaskList />
-
-      <Shop />
-    </div>
+        <Shop />
+      </div>
+    {/* @ts-ignore */}
+    </jelly-theme>
   )
 }

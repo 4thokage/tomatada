@@ -16,22 +16,24 @@ const ProgressRing: Component<Props> = props => {
   return (
     <svg height={props.radius * 2} width={props.radius * 2}>
       <circle
-        stroke="#eee"
+        stroke="var(--color-paper-3)"
         fill="transparent"
         stroke-width={props.stroke}
         r={normalizedRadius}
         cx={props.radius}
         cy={props.radius}
       />
-
       <circle
-        stroke="#6366f1"
+        stroke="var(--color-accent)"
         fill="transparent"
         stroke-width={props.stroke}
+        stroke-linecap="round"
         stroke-dasharray={`${circumference} ${circumference}`}
         style={{
           "stroke-dashoffset": strokeDashoffset(),
-          transition: "stroke-dashoffset 1s linear"
+          transition: "stroke-dashoffset 1s linear",
+          transform: "rotate(-90deg)",
+          "transform-origin": "50% 50%"
         }}
         r={normalizedRadius}
         cx={props.radius}

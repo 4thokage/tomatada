@@ -54,7 +54,7 @@ export default function PomodoroTimer(props: Props) {
     stopTimer()
 
     const currentMode = mode()
-    
+
     if (currentMode === "work") {
       const completed = pomodorosCompleted() + 1
       setPomodorosCompleted(completed)
@@ -146,62 +146,40 @@ export default function PomodoroTimer(props: Props) {
 
   const modeLabel = () => {
     switch (mode()) {
-      case "work": return "Focus Time"
-      case "shortBreak": return "Short Break"
-      case "longBreak": return "Long Break"
+      case "work": return "Focus"
+      case "shortBreak": return "Short break"
+      case "longBreak": return "Long break"
     }
   }
 
-  const modeClass = () => `mode-${mode()}`
-
   return (
-    <div class="panel">
-      <div class={`timer-modes ${modeClass()}`}>
-        <button
-          class={`mode-btn ${mode() === "work" ? "active" : ""}`}
-          onClick={() => setTimerMode("work")}
-        >
-          Work
-        </button>
-        <button
-          class={`mode-btn ${mode() === "shortBreak" ? "active" : ""}`}
-          onClick={() => setTimerMode("shortBreak")}
-        >
-          Short Break
-        </button>
-        <button
-          class={`mode-btn ${mode() === "longBreak" ? "active" : ""}`}
-          onClick={() => setTimerMode("longBreak")}
-        >
-          Long Break
-        </button>
-      </div>
+    <div class="section">
+      {/* @ts-ignore */}
+      <jelly-tabs>{/* @ts-ignore */}
+        <jelly-tab-panel label="Focus" active={mode() === "work" ? "" : undefined} onClick={() => setTimerMode("work")} />{/* @ts-ignore */}
+        <jelly-tab-panel label="Short" active={mode() === "shortBreak" ? "" : undefined} onClick={() => setTimerMode("shortBreak")} />{/* @ts-ignore */}
+        <jelly-tab-panel label="Long" active={mode() === "longBreak" ? "" : undefined} onClick={() => setTimerMode("longBreak")} />{/* @ts-ignore */}
+      </jelly-tabs>
 
       <div class="timer-wrapper">
-        <ProgressRing progress={progress()} radius={120} stroke={10} />
+        <ProgressRing progress={progress()} radius={110} stroke={3} />
         <div class="timer-text">
           {format()}
         </div>
       </div>
 
-      <div class="timer-status">
-        {modeLabel()}
+      <div class="timer-label">{modeLabel()}</div>
+
+      <div class="timer-controls">
+        {/* @ts-ignore */}
+        <jelly-button onClick={reset}>Reset</jelly-button>{/* @ts-ignore */}
+        <jelly-button variant="mint" onClick={toggle}>{running() ? "❚❚" : "▶"}</jelly-button>{/* @ts-ignore */}
+        <jelly-button onClick={skip}>Skip →</jelly-button>
       </div>
 
-      <div class="pomodoro-count">
-        {pomodorosCompleted()} pomodoros completed
-      </div>
-
-      <div class="button-group">
-        <button class="btn-toggle" onClick={toggle}>
-          {running() ? "❚❚" : "▶"}
-        </button>
-        <button class="btn-reset" onClick={reset}>
-          Reset
-        </button>
-        <button class="btn-skip" onClick={skip}>
-          Skip →
-        </button>
+      <div class="timer-count">
+        {/* @ts-ignore */}
+        <jelly-badge>{pomodorosCompleted()} completed</jelly-badge>
       </div>
     </div>
   )

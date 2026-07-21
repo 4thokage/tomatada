@@ -1,6 +1,6 @@
 import { For } from "solid-js"
 import { usePlayer } from "../stores/playerStore"
-import { UPGRADES, getUpgradeCost, UpgradeType } from "../game/inventory"
+import { UPGRADES, UpgradeType } from "../game/inventory"
 
 export default function Shop() {
   const { player, buyUpgrade, canAffordUpgrade, getUpgradeCostFor } = usePlayer()
@@ -16,13 +16,11 @@ export default function Shop() {
   }
 
   return (
-    <div class="panel">
-      <div class="title-section">
-        Shop
-      </div>
-      <div class="shop-gold">
-        <span class="gold-icon">🪙</span>
-        <span>{player().gold} Gold</span>
+    <div class="section">
+      <div class="shop-header">
+        <div class="section-title">Shop</div>
+        {/* @ts-ignore */}
+        <jelly-badge><b>{player().gold}</b> gold</jelly-badge>
       </div>
 
       <div class="shop-items">
@@ -36,22 +34,18 @@ export default function Shop() {
             const maxed = () => level() >= maxLevel
 
             return (
-              <div class="shop-item">
+              /* @ts-ignore */
+              <jelly-card><div class="shop-item">
                 <div class="item-info">
                   <div class="item-name">{upgrade.name}</div>
                   <div class="item-desc">{upgrade.description}</div>
-                  <div class="item-level">
-                    Level {level()} / {maxLevel}
-                  </div>
+                  {/* @ts-ignore */}
+                  <jelly-badge>Lv. {level()} / {maxLevel}</jelly-badge>
                 </div>
-                <button
-                  class={`btn-buy ${!affordable() || maxed() ? "disabled" : ""}`}
-                  onClick={() => handleBuy(type)}
-                  disabled={!affordable() || maxed()}
-                >
-                  {maxed() ? "MAX" : `${cost()} 🪙`}
-                </button>
-              </div>
+                {/* @ts-ignore */}
+                <jelly-button variant="mint" onClick={() => handleBuy(type)} disabled={!affordable() || maxed()}>{maxed() ? "MAX" : `${cost()} gold`}</jelly-button>
+              </div>{/* @ts-ignore */}
+              </jelly-card>
             )
           }}
         </For>

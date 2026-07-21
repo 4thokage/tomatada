@@ -3,42 +3,30 @@ import { xpForNextLevel } from "../game/leveling"
 import { UPGRADES } from "../game/inventory"
 
 export default function CharacterPanel() {
-
   const { player } = usePlayer()
 
   const xpPercent = () =>
     (player().xp / xpForNextLevel(player().level)) * 100
 
   return (
-    <div class="panel">
-      <div class="title-section">
-        Character
+    <div class="section">
+      <div class="section-title">Character</div>
+
+      <div class="character-row">
+        {/* @ts-ignore */}
+        <jelly-badge>Lv. <b>{player().level}</b></jelly-badge>{/* @ts-ignore */}
+        <jelly-badge>Gold <b>{player().gold}</b></jelly-badge>
       </div>
-      <div class="character-stats">
-        <div class="stat">
-          <div>Level</div>
-          <b>{player().level}</b>
-        </div>
-        <div class="stat">
-          <div>Gold</div>
-          <b>🪙 {player().gold}</b>
-        </div>
+
+      <div class="xp-bar-wrapper">
+        {/* @ts-ignore */}
+        <jelly-progress value={xpPercent()} />
       </div>
-      <div class="xp-container">
-        <div class="xp-bar-bg">
-          <div
-            class="xp-bar-fill"
-            style={{
-              width: `${xpPercent()}%`
-            }}
-          />
-        </div>
-      </div>
-      <div class="upgrades-summary">
+
+      <div class="upgrades-row">
         {UPGRADES.map(u => (
-          <div class="upgrade-badge" title={u.description}>
-            {u.name.split(" ")[0]}: {player().upgrades[u.type]}
-          </div>
+          /* @ts-ignore */
+          <jelly-chip title={u.description}>{u.name.split(" ")[0]}: {player().upgrades[u.type]}</jelly-chip>
         ))}
       </div>
     </div>

@@ -1,0 +1,9 @@
+{
+  "framework": "SolidJS + Vite",
+  "fonts": "Space Grotesk (display) + Geist (body) + JetBrains Mono (mono)",
+  "palette": "OKLCH custom properties, dark cool-tinted",
+  "motion": "motion-cut (CSS transitions only)",
+  "spacing": "4pt scale",
+  "design_system": "custom (austere-technical)",
+  "scanned_at": "2026-07-21"
+}
