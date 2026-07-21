@@ -9,7 +9,7 @@ export default function CharacterPanel() {
     (player().xp / xpForNextLevel(player().level)) * 100
 
   return (
-    <div class="section">
+    <div class="section section--tight">
       <div class="section-title">Character</div>
 
       <div class="character-row">

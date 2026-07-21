@@ -62,6 +62,9 @@
   --dur-short:    220ms;
   --dur-long:     420ms;
 
+  /* Overlays */
+  --color-backdrop: oklch(10% 0.008 240 / 0.9);
+
   /* Radii */
   --radius-sm: 4px;
   --radius-md: 6px;
@@ -102,10 +105,34 @@ body {
 .app-container {
   max-width: 560px;
   margin: 0 auto;
-  padding: var(--space-2xl) var(--space-lg);
+  padding: var(--space-2xl) var(--space-lg) var(--space-2xl) calc(var(--space-lg) + var(--space-xs));
   display: flex;
   flex-direction: column;
-  gap: var(--space-xl);
+  gap: 0;
+}
+
+
+/* ============================= */
+/* Section spacing (varied)      */
+/* ============================= */
+
+.section + .section {
+  margin-top: var(--space-xl);
+}
+
+.section--tight + .section {
+  margin-top: var(--space-lg);
+}
+
+.section--hero {
+  padding: var(--space-lg);
+  background: var(--color-paper-2);
+  border-radius: var(--radius-lg);
+  margin-top: var(--space-xl);
+}
+
+.section--hero + .section {
+  margin-top: var(--space-2xl);
 }
 
 
@@ -130,6 +157,17 @@ body {
 
 
 /* ============================= */
+/* Divider                       */
+/* ============================= */
+
+.section--divider {
+  height: 1px;
+  background: var(--color-rule);
+  margin: var(--space-lg) 0;
+}
+
+
+/* ============================= */
 /* Timer                         */
 /* ============================= */
 
@@ -140,7 +178,6 @@ body {
   position: relative;
   width: 220px;
   height: 220px;
-  margin: 0 auto;
 }
 
 .timer-text {
@@ -298,7 +335,7 @@ body {
 .offline-modal {
   position: fixed;
   inset: 0;
-  background: oklch(10% 0.008 240 / 0.9);
+  background: var(--color-backdrop);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -366,6 +403,10 @@ input:focus:not(:focus-visible) {
     padding: var(--space-lg) var(--space-md);
   }
 
+  .section--hero {
+    padding: var(--space-md);
+  }
+
   .timer-wrapper {
     width: 180px;
     height: 180px;
@@ -373,5 +414,24 @@ input:focus:not(:focus-visible) {
 
   .timer-text {
     font-size: 2.25rem;
+  }
+}
+
+@media (max-width: 375px) {
+  .app-container {
+    padding: var(--space-md) var(--space-sm);
+  }
+
+  .section--hero {
+    padding: var(--space-sm);
+  }
+
+  .timer-wrapper {
+    width: 160px;
+    height: 160px;
+  }
+
+  .timer-text {
+    font-size: 2rem;
   }
 }

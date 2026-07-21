@@ -31,7 +31,7 @@ const ProgressRing: Component<Props> = props => {
         stroke-dasharray={`${circumference} ${circumference}`}
         style={{
           "stroke-dashoffset": strokeDashoffset(),
-          transition: "stroke-dashoffset 1s linear",
+          transition: "stroke-dashoffset var(--dur-long) var(--ease-in-out)",
           transform: "rotate(-90deg)",
           "transform-origin": "50% 50%"
         }}
